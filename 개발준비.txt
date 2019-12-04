@@ -227,6 +227,10 @@ java -cp
 
 패키지에 소속하는 sourcefile은 컴파일시 주소가 명기된 폴더에 생성됨
 com 폴더는 패키지폴더로 정의됨
-//정의조건?
+
+//java-kotlin같은 java 호환언어는 다른 source여도 컴파일시 동일결과를 산출 따라서 언어의 차이에따라 패키지폴더가 구분될 수 없어 충돌이일어남 > main() java폴더가 생성되지 않음
+
+java -cp : class path 명령어, package경로가 선언된 파일의 경우 package folder를 지정함 이로 인하여 하위폴더의 java(class)를 구분할 수 있음// 확인필요
+
 package 소속 .class 실행시 경로는 .com 이전까지의 폴더만 표기후 공란요구
 example  java -cp bin/main .com/ohoracs/basic/Hello3
