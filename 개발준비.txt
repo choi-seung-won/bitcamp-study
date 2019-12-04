@@ -191,3 +191,27 @@ java(javacompiler)>Bytecode(P-code/IR)(ex-.class) >JVM(java.exe)
 .c>.obj>.exe
 
 CLI > Command Line Interface(terminal/Powershell)
+
+
+file sort rule
+src
+  branch main folder
+    branch java < java sourcefile ex).java
+    branch resources < 실행시 이용되는 기타 파일.properties,txt,xml~
+    branch webapp
+  branch test
+    branch java < unit test 실시하는 java sourcefile ex).java
+    branch resources < unit test 등에 사용하는 기타파일
+
+
+bitcamp-study
+  branch bitcamp-docs
+  branch bcjava
+    branch src/bin
+  branch bitcamp-java-project
+    branch src
+    branch bm
+
+
+
+empty folder will not upload on github_storage
