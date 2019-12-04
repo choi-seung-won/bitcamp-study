@@ -155,3 +155,39 @@ programs that executed by machine language - exe com (bat is not)
 .php > php engine >can be execute on windows
 .js > JavaScript engine(=V8) > =
 
+(JAVA)SOURCECODE ((JAVA)COMPILER) >IR = Bytecode (RUN)> VM(=Interpreter/engine/player/viewer) > (RUS)OS
+
+IR은 VM을거쳐 OS에서 실행되기 전 VM에서 다시 Compile을 거치며 Temp와같은 임시저장소에 저장후 OS로 전송됨(속도향상 도모)
+
+unix =/ linux (compile 요구, 높은 호환성)
+
+OS(android포함)-JIT Compiler내장
+JIT-설치시 AOT대비 설치속도가 빠름,실행시 번역중 딜레이있음
+Ahead Of Time-AOT방식 컴파일러(프로그램의 설치시점에 compile-기계어변환함/추후 실행의경우 기존보다 빠른 실행속도)
+JIT+AOT - 설치후 essential compile 대기시간 나머지 Compile
+
+vm-가상머신실행/IR을 읽을경우
+engine-일반실행/(js등의)sourcecode읽을경우
+
+
+java code (JavaCompiler 번역/문법오류검사) -> IR(기계어검사) -> vm -> OS / 실행시간 짧음
+js(source/Interpreted language-컴파일러를 거쳐서 기계어로 변환되지 않는 언어) -> 실행시 문법검사를 거침+실행시 해석필요/실행시간 길어짐
+
+JIT / AOT는 이를 해결하기위하여 개발된 방식
+
+.classfile=bytecode file
+
+javap(profile)
+javac(compile)
+
+compilefirst> java .class
+
+.js(javascript) (javascript/engine/(interpreter))> node.exe > os
+c 와같이 linker를 이용한 라이브러리/script 통합을 하지않음. 
+simillar .py .php .pl
+
+java는 가상기계어를 채용 JVM을 이용하여 VM에서 실행. java는 compile/interpreter 결합방식 채용
+java(javacompiler)>Bytecode(P-code/IR)(ex-.class) >JVM(java.exe)
+.c>.obj>.exe
+
+CLI > Command Line Interface(terminal/Powershell)
