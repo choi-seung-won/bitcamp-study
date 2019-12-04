@@ -182,6 +182,10 @@ javac(compile)
 
 compilefirst> java .class
 
+
+
+
+
 .js(javascript) (javascript/engine/(interpreter))> node.exe > os
 c 와같이 linker를 이용한 라이브러리/script 통합을 하지않음. 
 simillar .py .php .pl
@@ -215,3 +219,14 @@ bitcamp-study
 
 
 empty folder will not upload on github_storage
+
+
+
+javac -d bin/main 
+java -cp
+
+패키지에 소속하는 sourcefile은 컴파일시 주소가 명기된 폴더에 생성됨
+com 폴더는 패키지폴더로 정의됨
+//정의조건?
+package 소속 .class 실행시 경로는 .com 이전까지의 폴더만 표기후 공란요구
+example  java -cp bin/main .com/ohoracs/basic/Hello3
