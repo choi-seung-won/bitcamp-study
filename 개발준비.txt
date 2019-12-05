@@ -270,7 +270,7 @@ DSL - 특정 영역에서 사용할 언어(build.gradle 설정파일에 사용�
 
 tree /a /f *커맨드라인 명령어
 
-.js / javascript는 
+//.js / javascript는 
 
 class-분류명, function을 목적에따라 분류하는 문법- 모든 function은 class에 소속해야함
 java-언어의 관리/유지보수를 목적으로하는 객체지향언어, function의 그룹분류를 쉽게하기 위함
