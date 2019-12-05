@@ -20,9 +20,9 @@ A 소프트웨어의 실행은 저장장치에 저장된 작성 완료된 명령
 		
 [X]CPU 인스트럭션이 무엇인지 이해한다. (ARM CPU 기준)	검색	http://vision.gel.ulaval.ca/~jflalonde/cours/1001/h17/docs/arm-instructionset.pdf
 
-ARM에서는 모든 CPU명령은 모든 명령문실행은 현재 상태 레지스터와 상태 레지스터 플래그에 의거하여 실행된다, C,N,Z,V 플래그가 설정된 필드의 조건을 만족할경우 명령문은 실행되고 그렇지 않을경우 무시된다.
+/* ARM에서는 모든 CPU명령은 모든 명령문실행은 현재 상태 레지스터와 상태 레지스터 플래그에 의거하여 실행된다, C,N,Z,V 플래그가 설정된 필드의 조건을 만족할경우 명령문은 실행되고 그렇지 않을경우 무시된다.
 명령문 실행은 branch에서 general register에서 전송된 명령문을 복사하여 Program counter에 전송해 다음으로 실행 될 명령어의 주소를 가져 그것을 실행할 기계어 코드의 위치를 지정한다
-이는 CPU가 모든 시간동안 여러 명령구문을 각각 다른 클럭에서 실행 가능하게 한다
+이는 CPU가 모든 시간동안 여러 명령구문을 각각 다른 클럭에서 실행 가능하게 한다 */
 
 [O]CPU 인스트럭션과 실행 파일, OS의 관계를 이해한다.
 
@@ -58,9 +58,9 @@ A system enviroment-JAVA_HOME에서 JAVA의 \bin폴더를 입력함으로서 어
 PATH 환경변수를 입력함으로서 JAVA가 아닌 컨텐츠 또한 어느 디렉토리에서나 이용할 수 있다.
 
 
-[ ]자바 바이트코드를 이해한다.	검색	https://docs.oracle.com/javase/specs/jvms/se13/jvms13.pdf
+[O]자바 바이트코드를 이해한다.	검색	https://docs.oracle.com/javase/specs/jvms/se13/jvms13.pdf
 
-A 
+A JAVA ByteCode란 모든 종류의 OS에서 JAVA의 개별 컴파일러를 실행할 필요 없이 JavaCompiler로 컴파일하여 JVM에서 바로 실행 가능한 IR을 지칭한다
 
 
 [O]바이트코드와 클래스 파일(.class)의 관계를 이해한다.	/HelloWorld.class	https://medium.com/@davethomas_9528/writing-hello-world-in-java-byte-code-34f75428e0ad
@@ -76,8 +76,15 @@ JVM=ByteCode-IR을 실행하는 실행기
 CLI에서 javafile 대상으로 한 javac 커맨드를 이용하여 class파일을 생성
 
 # 프로그래밍 언어와 컴파일		
-[ ]컴파일 방식 프로그래밍이 등장한 이유를 이해한다.		
-[ ]프로그래밍 언어와 컴파일, CPU 인스트럭션의 관계를 이해한다.		
+[O]컴파일 방식 프로그래밍이 등장한 이유를 이해한다.		
+
+A 매 시퀀스마다 VM에서 번역하는 과정을 없애 속도향상을 도모하기위하여 도입되었다.
+
+
+[ ]프로그래밍 언어와 컴파일, CPU 인스트럭션의 관계를 이해한다.	
+
+A 프로그래밍 언어는 각각의 OS에 대응되는 컴파일러를 통해서 IR 혹은 ByteCode 로 변환된다, 이는  CPU에 전송되어 
+
 [ ]컴파일러를 이용하여 소스 코드를 목적 코드(CPU 인스트럭션)로 생성하는 과정을 이해한다. (C 프로그래밍 언어 기준)	/module.c, /main.c	$ gcc -c 소스파일
 [ ]링커를 이용하여 목적 코드가 들어 있는 파일을 하나로 묶어 실행 파일을 만드는 과정을 이해한다. (C 프로그래밍 언어 기준)		$ ld -o 실행파일 목적파일 목적파일 … -lSystem -macosx_version_min 10.13
 [ ]"소스 파일, 목적파일, 실행 파일"과 "컴파일러, 링커"의 관계를 이해한다. (C 프로그래밍 언어 기준)		
@@ -115,9 +122,15 @@ A 유지보수목적
 
 
 [ ]패키지에 소속된 클래스 파일을 실행할 수 있다.	src/main/java/com/ohoracs/basic/Hello3.java	$ java -cp bin/main com.ohoracs.basic.Hello3
+
+A 
+
 [ ]패키지를 적용하지 않은 채로 그 소스 파일을 그냥 패키지 폴더에 둔다면 컴파일 할 때 어떤 문제가 발생하는지 안다.	src/main/java/com/ohoracs/basic/Hello4.java	
+
+A 컴파일시 .class 파일이 경로를 따르지않고 패키지폴더 최상위에 생성된다
 
 # Gradle 빌드 도구		
 [ ]Gradle 빌드 도구를 이용하여 작업 폴더를 자바 프로젝트 폴더로 구성할 수 있다.	/프로젝트폴더	$ gradle init
 [ ]Gradle로 생성된 src 디렉토리의 구조를 이해하고 설명할 수 있다.	/src	
 [ ]src 디렉토리 외에 다른 디렉토리나 파일의 용도를 이해한다.		
+distribution에 실행 가능한 bat파일과 ok파일이 생성되며 libs에는 실행에 필요한 라이브러리가 저장됨

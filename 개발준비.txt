@@ -234,3 +234,50 @@ java -cp : class path 명령어, package경로가 선언된 파일의 경우 pac
 
 package 소속 .class 실행시 경로는 .com 이전까지의 폴더만 표기후 공란요구
 example  java -cp bin/main .com/ohoracs/basic/Hello3
+
+
+cpu 논리회로의 작용방식 체크*
+
+PS C:\Users\user\git\bitcamp-study\bitcamp-java> javac -d bin/main src/main/java/Hello5.java
+PS C:\Users\user\git\bitcamp-study\bitcamp-java> java -cp bin/main Hello5
+*package example
+
+
+web dev
+요구사항 식별 > 분석 > 설계
+//빌드(빌드도구 예시 Ant -> Maven > Gradle)\/*
+프로젝트폴더 준비
+웹에 필요한 파일 .java (compile > .class).xml .html .css .js
+unit test(ex-junit)
+as result > .jar .zip .war(배치파일) + API(해당 app을 응용하는 개발자를위한)문서생성
+>> (업로드) 서버배치() */
+
+eclipse는 설정파일 없이는 프로젝트폴더 인식불가
+
+<name></name><tag></tag>(element,metadata)
+
+복잡한 제어를 할 수 있는기능>XML
+
+groovy 언어를사용해 설정파일(스크립트) 적용
+build.gradle < gradle을 설정도구로 사용했다는 설정파일
+
+.c compile결과는 변환후 기계어(CPU instruction).exe 파일로 생성됨. 구문은 링커를통하여 라이브러리를 사용, .exe생성. 따라서 실행이 빠름,기계어로의 compile시 플랫폼에 종속됨(cpu/os) // compile 방식
+.js의 경우 nodejs에서 실행할 부분만 검사시행후 실행, 오류있어도 해당구문 실행이 없으면 에러없음,배포시 오류존재가능. source를 읽어 실행하므로 속도가 느림, compile이없어 코드변환이 편리 // interpreter 방식
+.java의 경우 JavaCompiler을 통해서 IR인 .class로의 변환 이후에도 JVM을 이용해야 실행가능/ 실행속도 C보다 느림> 보완을위해 JIT/AOT 컴파일러방식 등장
+ / 인터프리터,컴파일러 결합방식
+
+DSL - 특정 영역에서 사용할 언어(build.gradle 설정파일에 사용할 언어)
+
+tree /a /f *커맨드라인 명령어
+
+.js / javascript는 
+
+class-분류명, function을 목적에따라 분류하는 문법- 모든 function은 class에 소속해야함
+java-언어의 관리/유지보수를 목적으로하는 객체지향언어, function의 그룹분류를 쉽게하기 위함
+java,c++,python...(객체지향프로그램 oop)
+
+
+@Override annotation > 기존에 있는 기능을 임의로 재정의함
+
+
+(blcok단위도 마찬가지로 생각할 수 있음)1byte=8bit // 2^(bit)수 만큼 
