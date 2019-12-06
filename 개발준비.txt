@@ -254,6 +254,7 @@ as result > .jar .zip .war(배치파일) + API(해당 app을 응용하는 개발
 
 eclipse는 설정파일 없이는 프로젝트폴더 인식불가
 
+
 <name></name><tag></tag>(element,metadata)
 
 복잡한 제어를 할 수 있는기능>XML
@@ -278,6 +279,85 @@ java,c++,python...(객체지향프로그램 oop)
 
 
 @Override annotation > 기존에 있는 기능을 임의로 재정의함
+toString - 객체 정보값을 문자열로 만들어 리턴하는 메소드
 
 
 (blcok단위도 마찬가지로 생각할 수 있음)1byte=8bit // 2^(bit)수 만큼 
+
+
+Application software 구조 - 기능단위로 묶인, 명령어가 들어있는 function의 집합을 역할에 따라 관리하기 쉽게 묶는문법인 class로 치환>단일 .java파일 내부에 하나이상의 class를 묶음
+class의 관리를 위하여 package 도입(관리를위하여 디렉토리로 묶음) > .java는 package에 소속될수없음, .class는 해당 상위 .java파일의 첫줄에 선언한 package의 경로에 따라 생성관리됨
+.java를 컴파일시 각각의 class는 .class파일로 변환됨
+package로 .class를 관리시 .com.a.b 의경우 b에 미리 .class를 생성했어도 a 상위폴더에 package를 지정가능하여 /b/.class지정이 가능
+
+SystemIntegretion - 신규프로젝트 - 기능추가
+SystemMaintenence - 완료된프로젝트 - 기능추가및변경
+
+
+//ObjectOrientedProgramming commandline map
+Data 저장 - file Input/Output - 개발자가 직접 Data를 저장하는 도구(JDBC : DBMS를 사용하여 Data를 저장시키는 도구)사용법
+MybatisFramework - JDBC를 쉽게 사용하게 해주는 도구 사용법
+Data transfer > socket networking
+Data -> web에서 결과송출 수단으로 HTML/CSS 선택
+     서버관리 spring webMVC
+     -> 최종사용자의 행동제어 .js (javascript) 선택
+     bootstrap/jQuery 사용
+     Data 구조화 알고리즘 - LinkedList / stack / Queue
+
+literal - data표현
+변수variable - data를 저장할 메모리 준비(선언) + array - 같은 유형의 메모리를 여러 개 준비시키는 문법
+연산자 - data를 가공하는 도구
+제어문(조건,반복문등) - 명령문의 실행흐름 제어
+method(function) - 명령어를 관리하기 편하게 기능단위로 묶은 문법
+class - method를 관리하기편하게 역할(Role=responsibility)단위로 분류시키는 문법 
+ ㄴ상속 - 기존 명령 extend,새 기능 추가/변경
+  //하위 3개문항을 다형성이라고 칭함
+  ㄴ다형적변수 - 개념추상화, 같은 유형의 메모리를 지정하는 방법
+  ㄴOverriding - 기존 method 재정의  // 기존 class에서 개발자가 정의한 변수의 재정의
+   ㄴOverloading - 같은 이름의 유사기능 추가문법
+ ㄴ 사용자 정의 데이터타입 - 메모리구조를 data에 맞게 커스터마이징 하는 문법 // ex('int=x' 선언시 정의되는 int)
+  ㄴ접근제어(캡슐화) - method / memory의 접근을 제어
+  ㄴinstance -
+   ㄴ instance method - 인스턴스 메모리를 다루는 기능
+  ㄴ생성자 - 인스턴스를 초기화시키는 기능
+  DesignPattern - 효율적인 클래스 구조관리
+
+
+CPU Instruction 에서 문자열과 정/난수등의 구분 > 문자열은 code로 저장
+CharacterSetCode > 문자열을 저장하는 코드 ex)ASCII ISO-8859-1
+부동소수점의 경우 정규화규칙을 정하여(IECC 754) 2진법으로 전기적신호로 변환함
+
+2진수로 변환이 가능한것은 전기적신호로 변환할 수 있음(빛의경우 RGB, 0~255사용/참고 http://m.insightsemicon.com/m/m_article.html?no=128795)
+
+jpg 용량 > 압축을통하기에 BMP보다 용량이작음
+encoding > 2진수로 코드화를시킴 
+
+정수값의 저장 > 문서에서 전기적 신호를 표기하는 방법인 2진수로 표현(Encoding/변환) > 실제 CPU Instruction인 전기적신호로 메모리에 저장
+문자열의 저장 > CharacterSetCode(ISO-8859-1/문자를 8bit로 변환)의 규격으로 변환 > cpu instruction전기신호로 메모리에 저장
+*java에서는 문자열을 내부규격으로 변환 (ex UCS-2/16bit)
+논리 : true > 00000001 >CPU I
+색상(pixel shows) : yellow > 11111111(R) 11111111(G) 00000000(B) 매 연산마다 3byte사용 > CPU Instruction전기신호로 변환
+
+encoding : 값을 규칙에의하여 값'(진수값)으로 변환하는것
+decoding : 값'을 복원하는것
+
+데이터인코딩 ex)mpeg/H.264->  > 압축데이터(jpeg등) // 압축시 파일손상이 발생하여 해상도 및 품질이 하락 
+복원(decoding) 시 Codec 요구
+
+정수값을 2진수로 변환시 무조건적으로 2의보수 사용
+부동소수점의경우 가수부(Magnitude방식으로 2진수로 변환)/지수부(K-excess방식으로 2진수로 변환) 로 표기/나눔
+ㄴ Magnitude 방식으로서 음수양수를 같은값으로 치환, 부호를 첫 비트로 표현
+ㄴ K-excess 방식으로 127bit 초과
+문자>2진수로 변환시 UCS-2 CharacterSet을 준거하여 2진수로 변환
+논리 > true : 1 / false : 0
+
+HDD는 자석가루를 이용하여 데이터를 기록함, 따라서 전원공급이 사라져도 데이터가 유지가능.
+RAM은 휘발성 메모리이기에 전원공급이 끊어지면 데이터가 소멸함.
+SDD는 내장 배터리가 있으므로 데이터가 유지가능.
+windows 저장장치HDD는 platter의 관리를 위하여 platter의 저장공간을 track으로 칭함. 한번 arm이 데이터를 읽을경우 사용하는 track의 묶음을 cylinder라 칭한다.
+track을 사용하여 데이터를 할당함. track은 sector로 분류 각각의 섹터에 512bytes를 저장, 해당 sector가 할당시 할당공간의 일부만을 사용할 수 없음,따라서 1byte를 저장하더라도 4096byte를 사용.
+이 sector의 체계(format)을 관리/준비하는 시스템을 file system 으로 칭함 ex)NTFS/FAT32/Ext2,3
+hdd의경우 sector가 불량이 생길경우 해당 sector만 badsector로 정리하고 사용을안함/SDD의경우 칩이기에 회선이 하나 고장날경우 사용이불가능
+따라서 OS가 다를경우에 usb을 이용하여 파일을 옮기기위해선 usb포멧이 필요함
+자석 기록방식이 수평기록방식 > 수직기록방식으로 개선되어 저장장치의 용량이 늘어남
+flashmemory는 배터리가 존재하기에 기록저장기간이 6개월~2년후에 급속도로 줄어듦, 따라서 교체가 필요함

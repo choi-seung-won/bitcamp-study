@@ -1,0 +1,42 @@
+VO(Value Object) : 직접 데이터를 넣어주기 보다는 넣어진 데이터를 getter를 통해 사용하는 Read only 속성을 가진 불변 클래스. 중간에 값을 바꿀 수 없으며 새로 만들어야함
+
+DTO(Data Transfer Object) : VO와유사하나 불변값을 가지지않음
+
+import annotation.~ : @ 를 기반으로한 annotation을 사용시 선언
+
+HttpServletRequest : 하나의 요청에서 HttpServletRequest 객체가 소멸하기 까지 상태정보를 유지하고자 할 때, 한번의 요청으로 실행된 페이지끼리 정보를 공유하고자 할 때 사용
+ㄴex) protected void doGet((HSRequest)request , (HSResponse)response)
+
+HttpServletResponse : ServletResponse 인터페이스는 클라이언트의 요청에 응답하기 위한 출력스트림을 추출하거나 버퍼의 크기를 설정하고, 응답할 내용의 타입과 문자셋을 설정하는 등의 작업을 수행할 수있다. 
+
+HttpServletResponse는 ServletResponse 인터페이스를 상속 받아 웹 애플리케이션을 개발하면서 응답 관련 작업을 수행하기 위한 HTTP 프로토콜 통신 기반의 응답 관련 메소드들도 확장하여 포함하고 있다.
+
+
+
+throw @Exception : 구문의 에러 / 예외처리를 담당. ex) throws servlet exception, IOException
+
+
+preparedstatement : statement 와 다르게 캐쉬를 채용함,쿼리 실행시 문장분석, 컴파일, 실행의 3단계를 거치며 이 작업이후 PS 는 캐쉬를남겨 다음작업에서의 DB부하가 줄어듦
+
+
+
+
+
+protected void doPost (HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException{
+  
+  Connection conn(variable) = null;
+  PreparedStatement stmt(v) = null;
+  ResultSet rs = null;
+  try{
+      ServletContext sc = this.getServletContext();
+      conn = (Connection) sc.getAttribute("conn");
+      stmt = conn. preparedStatement("/*sql문*/Select A, B From C" + "Where A=? And D=?");
+      stmt.setString(1, request.getParameter("A"));
+      stmt.setString(2, request.getParameter("D"));
+      rs = stmt.executeQuery();
+      if(rs.next()) {
+        Member(function) member(variable) = new Member()
+      }
+  }
+}
