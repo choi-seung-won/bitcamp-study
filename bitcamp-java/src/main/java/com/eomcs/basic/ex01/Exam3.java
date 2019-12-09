@@ -1,4 +1,4 @@
-package com.ohoracs.basic.ex01;
+package com.eomcs.basic.ex01;
 //adssadasdㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ
 public class Exam3 {
   public static void main(String[] args) {
