@@ -263,7 +263,7 @@ groovy 언어를사용해 설정파일(스크립트) 적용
 build.gradle < gradle을 설정도구로 사용했다는 설정파일
 
 .c compile결과는 변환후 기계어(CPU instruction).exe 파일로 생성됨. 구문은 링커를통하여 라이브러리를 사용, .exe생성. 따라서 실행이 빠름,기계어로의 compile시 플랫폼에 종속됨(cpu/os) // compile 방식
-.js의 경우 nodejs에서 실행할 부분만 검사시행후 실행, 오류있어도 해당구문 실행이 없으면 에러없음,배포시 오류존재가능. source를 읽어 실행하므로 속도가 느림, compile이없어 코드변환이 편리 // interpreter 방식
+.js의 경우 nodejs에서 실행할 부분만 검사시행후 실행, 오류있어도 해당구문 실행이 없으면 에러없음,배포시 오류존재가능. source를 읽어 실행하므로 속도가 느림, compile이없어 코드변환이 편리 // interpreter 방식 - interpreter만 있다면 os에따른 컴파일이 필요없음. 최근은 JIT compiler를 사용하여 속도를 높이기도 함.
 .java의 경우 JavaCompiler을 통해서 IR인 .class로의 변환 이후에도 JVM을 이용해야 실행가능/ 실행속도 C보다 느림> 보완을위해 JIT/AOT 컴파일러방식 등장
  / 인터프리터,컴파일러 결합방식
 
@@ -466,7 +466,7 @@ CharSet 은 문자에대한 코드값을 정의한 표를 의미
 UTF-8은 
 JAVA 는 source를 내부적으로 다룰때는 unicode를 사용, 외부에 export / 통신을 할 경우 UTF-8을 사용함
 JVM의 경우 내부적으로 UCS-2를 사용함
-JVM(ucs-2) > file/Network(utf-8) / 반대의경우는 변환을 필요 // export시 encoding이 utf-8이라면 javac 사용시 unicode set을 할 필요성이있는가
+JVM(ucs-2) > file/Network(utf-8) / 반대의경우는 변환을 필요
 
 UTF-8의 사용예시 - search engine에서 한글을 검색할 경우 %BA%..등의 코드를 접할 수 있음. 이는 UTF-8로의 인코딩을 했다는 기록
 letter A > 0041(UCS-2 CharacterSet,encoding) > Transfer to website 41(encoding) > A(URL Encoding)
@@ -475,3 +475,64 @@ letter 가 > AC00 > EAB080(encoding) > %EA%B0%80(URL Encoding)
 
 Value를 polices/rules에 따라 Value를 가공하는것 > Encoding
 가공된 Value를 rules에 따라 복구하는것 > Decoding
+
+
+memory > RAM
+cpu instruction의 명령은 32bit로 전해지며 이에따라 RAM에 명령을 저장-
+
+2의보수값의 변환 - 전압값으로 전송된 instruction을 일정 전력저항값을 가진 논리회로(트랜지스터)를 거쳐 0,1을 역전> 산출된 신호를 보수값으로 변환, 이 과정에서 연산/계산을 하지않음, 논리회로를 따라서 결과값을 산출.
+
+워드 = 연산을 통하여 저장된 장치로부터 레지스터에 옮겨 놓을 수 있는 데이터단위
+
+
+ [\ u](CodeValue 값 사용 선언)
+
+바이트의 정의
+
+바이트의 정의는 여러 가지가 있으며, 서로 비슷한 뜻을 지니지만 섞어 쓸 경우 혼동을 부를 수도 있다.
+
+일정한 개수의 비트로 이루어진 연속된 비트열. ‘일정한 개수’가 항상 정해진 건 아니지만, 최근에는 사실상 1바이트를 8비트로 간주하는 경우가 흔하다.
+
+이진 컴퓨터의 워드 안에서 주소로 표현할 수 있는 가장 작은 단위에 해당하는 연속된 비트열. 예를 들어서 CDC 6000 계열의 메인프레임은 60비트 부동 소수점 실수를 6비트짜리 바이트 10개로 나눴으며, 따라서 대문자 로마자와 숫자만을 표현할 수 있는 천공 카드에 결과를 출력하기가 용이했다. 또한 CDC의 경우 12비트 I/O를 사용했기 때문에 12비트를 1바이트라 부르기도 했다. 이 정의 역시 최근에는 대부분 8비트를 가리키지만, 역사적으로 6비트, 7비트, 9비트 등의 바이트가 존재했다.
+
+직렬 데이터 스트림(예를 들어서 모뎀 등)에서 의미를 가지는 가장 작은 연속된 비트열. 여기에는 시작 비트, 종료 비트, 패리티 비트 등이 포함될 수 있으며, 예를 들어 7비트 ASCII 부호를 저장할 경우 최소 7비트에서 최고 12비트가 한 바이트가 될 수 있다.
+
+몇몇 프로그래밍 언어의 자료형. 예를 들어 C의 경우 한 바이트는 실행 환경에서 쓰이는 문자들을 담을 수 있을 만큼 큰 단위(C 표준 3.5항)로 정의되며, 한 바이트를 담는 char 자료형은 부호가 있느냐 없느냐와 상관 없이 적어도 8비트 이상(5.2.4.2.1항)이어야 한다. 자바의 byte 자료형은 항상 부호가 있으며 8비트로 정의된다.
+
+How does a CPU load multiple bytes at once if memory is byte addressed?
+
+> Because the width of the data bus and the size of the smallest addressable unit are two separate things.
+Just because you can specify addresses at the byte level, does not mean you have to have an 8 bit data bus. Most (possibly all) modern x86 processors use a 64 bit data bus and every time they read from memory, they read 64 bits. If you only requested 8 bits, the excess is simply discarded.
+/*
+If you request more than 64 bits (for example, if loading 128 bit SSE registers), then there will be multiple memory accesses.
+
+Many processors also have a concept of alignment, which basically means that every memory access is on a address divisible by the data bus width. Most can still fetch unaligned memory, but if it crosses an alignment boundary (for example, requesting 32 bits at address 0xFC on a 64 bit aligned system), you'll get multiple memory accesses, even if it would otherwise fit in the data bus.
+*/
+
+normally, 1byte=1cell is samllest size that cpu can read
+
+
+CPU - 막대한양의 transistor가 조합된 결과물. transistor의 logic(조건문- if nor or either...)에 따라서 result가 갈림. cpu는 회로에 걸린 전압값을 저항/transistor를 거쳐 결과값을 출력함.
+cpu자체는 연산을 하지 않음.
+
+
+boolean - JVM에서 4 byte 정수 메모리를 사용, 1/0(T/F)값을 저장하나 Array(배열)인 경우 1byte 정수 배열의 메모리 사용 // https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-2.html#jvms-2.3 - 2.3.4
+
+int - C language에서는 OS에 따라 크기가 다름(16bit OS- 2byte, 32bit OS - 4byte), Java language 에서는 4byte
+char - unicode를 저장
+
+function의 lifecycle - method 호출시 stack에 로컬변수를 생성, 변수 호출이 끝나면 cache에서 사라짐
+
+java - 전역변수가 없음
+
+f-4byte부동소수점을 표현하는 접미사
+
+.jar = user가 생성한 .class file의 jar(=jar,JavaARchive) / build/distributions/.zip도 동일
+
+gradle compile.java = gradle이 해당 project의 compile을 함(javac 실행)
+
+gradle 에서의 build folder - 언제나 재생성 가능함, 따라서 github upload를 하지않으며 삭제에 위험부담이 없음
+
+.classpath/.project - eclipse가 참고하는 파일, 다른 editor에겐 의미가없음
+
+.metadata - eclipse 사용중 관련한 설정을 저장하는파일

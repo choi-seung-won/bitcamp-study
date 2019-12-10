@@ -1,24 +1,18 @@
 package com.eomcs.basic.ex03;
 
 
-public class Exam41 { 
+public class Exam42 { 
 
-public static void main(String[] args){
-
-  //직접문자 작성가능 > 'letter' 
-  System.out.println('A');
-  System.out.println('가');
-  System.out.println('A');
-  System.out.println('人'); // [\ u](CodeValue 값 사용 선언)[UCS-2 Code]
-  
-  //CodeValue 값으로 문자 지정 가능
-  System.out.println('\u0041'); // A
-  System.out.println('\u0030'); // 0
-  System.out.println('\u0025'); // %
-  System.out.println('\uac00'); // 가
-
+public static void main(String[] args)
+{
+  for (int i = 0; i < 11172; i++)
+  {
+    if(i % 80 == 0)
+     System.out.println();
+    System.out.println((char)(0xac00 + i));
+  }
 }
-
+//(char) > character code 임을 정의한다. fontfile에서 해당 이미지를 불러옴
 }
 
 //ASCII(7bit)

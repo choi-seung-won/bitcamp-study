@@ -1,24 +1,22 @@
 package com.eomcs.basic.ex03;
 
 
-public class Exam41 { 
+public class Exam43 { 
 
-public static void main(String[] args){
-
-  //직접문자 작성가능 > 'letter' 
-  System.out.println('A');
-  System.out.println('가');
-  System.out.println('A');
-  System.out.println('人'); // [\ u](CodeValue 값 사용 선언)[UCS-2 Code]
+public static void main(String[] args)
+{
   
-  //CodeValue 값으로 문자 지정 가능
-  System.out.println('\u0041'); // A
-  System.out.println('\u0030'); // 0
-  System.out.println('\u0025'); // %
-  System.out.println('\uac00'); // 가
+    System.out.println(0xac00);//정수
+    System.out.println((char)0xac00);
+    System.out.println('가');
+    System.out.println((int)'가'); // 문자코드를 정수로 간주하고 출력 =(ac00)16 = 44032 > 다른 수와 연산을 수행할 수 있음 ((16^4)x10) + ((16^2)x12)) 16진수
+    System.out.println('가' + 1); // 문자코드에 정수값을 [연산]하는 순간 결과값은 일반 정수값이 나옴, 연산결과를 문자코드값으로 출력을 원할 시 (char)을 연산 이전에 정의
+    System.out.println((char)('걱' + 1));
+
+
 
 }
-
+//(char) > character code 임을 정의한다. fontfile에서 해당 이미지를 불러옴
 }
 
 //ASCII(7bit)
