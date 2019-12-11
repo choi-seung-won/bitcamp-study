@@ -55,5 +55,5 @@ App3.java 실행 결과
 ### 작업4) AppTest 클래스를 삭제하라.
 
 ```
-src/test/java/com/eomcs/lms/AppTest.java 삭제
+src\test\java\com\bccsw\MyProjectCL\AppTest.java 삭제
 ```
