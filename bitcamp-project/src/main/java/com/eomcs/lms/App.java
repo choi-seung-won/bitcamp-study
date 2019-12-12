@@ -3,59 +3,87 @@
  */
 package com.eomcs.lms;
 
+import java.sql.Date;
 import java.util.Scanner;
 
 public class App {
 
   public static void main(String[] args) {
 
+    java.io.InputStream sc = System.in;
+    
     Scanner keyboard = new Scanner(System.in); // keyboard에서 사용자가 입력한 값을 읽어 문자열 정수 부동소수점등으로 리턴하는 역할
-    System.out.println("number?\n");
-    String no = keyboard.nextLine();
     
-    System.out.println("number\n" + no);
+    System.out.println("number? ");
     
-    System.out.println("classN?\n");
+    int no = keyboard.nextInt();
+    
+    
+    keyboard.nextLine();
+    
+    
+    System.out.println("classN? ");
+   
     String ao = keyboard.nextLine();
     
-    System.out.println("classN\n" + ao);
     
-    System.out.println("exzplain?\n");
-    String bo = keyboard.nextLine();
+    System.out.println("explain? ");
     
-    System.out.println("explain\n" + bo);
+    String bo = keyboard.next(); // nextInt()후에 남아있는 줄바꿈 기호를 제거한다
     
-    System.out.println("explainsda\n");
     
-    String co = keyboard.nextLine();
+//    System.out.println("explainsda\n");
     
-    System.out.println("explainasda\n" + co);
+//    String co = keyboard.next();
+    
     
 //    System.out.println("explain\n");
    
-    System.out.println("startdate\n");    
-    String eo = keyboard.nextLine();
+    System.out.print("startdate ");    
+    
+    // yyyy-mm-dd 형태로 입력된 문자열을 날짜 정보로 바꿈
+
+    
+    Date eo = Date.valueOf(keyboard.next());
     
 //    System.out.println("startdate\t" + eo);
     
     
-    System.out.println("enddate\t");
+    System.out.print("enddate ");
     
-    String fo = keyboard.nextLine();
+    String fo = keyboard.next();
 //    System.out.println("enddate\t" + fo);
     
 
+//    System.out.println("overall ");
     
+  //  int eo1 = 
+    
+  //  int fo2 = Integer.parseInt(fo);
 
-    System.out.printf("overall: %s ~ %s \n" , eo,fo);
     
-    System.out.println("daily?");
+//    int comp = eo1 + fo2;
+//    int comp2 = (comp)/(bo+co);
     
     String po = keyboard.nextLine();
-    System.out.println("daily" + po);
     
+    
+    System.out.println("number\n" + no);
+    System.out.println("classN\n" + ao);
+    System.out.println("explain\n" + bo);
+//    System.out.println("explainasda\n" + co);
   
+ //   System.out.printf("overall: %s \n" , comp);
+ //   System.out.println("daily" + comp);
+   
+    
+    System.out.printf("overall: %s \n" , eo);
+//    System.out.println("daily" + comp);
+ 
+    
      keyboard.close();
 
   }
 }
+
+//System.out.println("daily?");
