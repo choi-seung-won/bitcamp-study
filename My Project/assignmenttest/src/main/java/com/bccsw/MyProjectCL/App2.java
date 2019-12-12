@@ -2,8 +2,7 @@ package com.bccsw.MyProjectCL;
 
 public class App2 {
 
-  public static void main(String[] args) 
-  {
+  public static void main(String[] args) {
     System.out.println("번호: 1");
     System.out.println("이름: 홍길동");
     System.out.println("이메일: hong@test.com");
