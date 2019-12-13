@@ -8,81 +8,90 @@ import java.util.Scanner;
 
 public class App {
 
-  public static void main(String[] args) {
-
-    java.io.InputStream sc = System.in;
-    
-    Scanner keyboard = new Scanner(System.in); // keyboard에서 사용자가 입력한 값을 읽어 문자열 정수 부동소수점등으로 리턴하는 역할
-    
-    System.out.println("number? ");
-    
-    int no = keyboard.nextInt();
-    
-    
-    keyboard.nextLine();
-    
-    
-    System.out.println("classN? ");
-   
-    String ao = keyboard.nextLine();
-    
-    
-    System.out.println("explain? ");
-    
-    String bo = keyboard.next(); // nextInt()후에 남아있는 줄바꿈 기호를 제거한다
-    
-    
-//    System.out.println("explainsda\n");
-    
-//    String co = keyboard.next();
-    
-    
-//    System.out.println("explain\n");
-   
-    System.out.print("startdate ");    
-    
-    // yyyy-mm-dd 형태로 입력된 문자열을 날짜 정보로 바꿈
-
-    
-    Date eo = Date.valueOf(keyboard.next());
-    
-//    System.out.println("startdate\t" + eo);
-    
-    
-    System.out.print("enddate ");
-    
-    String fo = keyboard.next();
-//    System.out.println("enddate\t" + fo);
-    
-
-//    System.out.println("overall ");
-    
-  //  int eo1 = 
-    
-  //  int fo2 = Integer.parseInt(fo);
-
-    
-//    int comp = eo1 + fo2;
-//    int comp2 = (comp)/(bo+co);
-    
-    String po = keyboard.nextLine();
-    
-    
-    System.out.println("number\n" + no);
-    System.out.println("classN\n" + ao);
-    System.out.println("explain\n" + bo);
-//    System.out.println("explainasda\n" + co);
   
- //   System.out.printf("overall: %s \n" , comp);
- //   System.out.println("daily" + comp);
-   
-    
-    System.out.printf("overall: %s \n" , eo);
-//    System.out.println("daily" + comp);
  
+  public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);
     
-     keyboard.close();
+    final int size = 10000;
+    
+//    int[] count = new int[size];
+    int[] number = new int[size];
+    String[] classname = new String[size];
+    String[] classdesc = new String[size];
+    Date[] startdate = new Date[size];
+    Date[] enddate = new Date[size];
+    int[] overall = new int[size];
+    int[] daily = new int[size];     
+    
+    String response;
+    
+    int count = 0;
+    
+    
+    for(int i = 0 ; i < size; i ++) {      
+      
+    System.out.println("번호?\n");
 
+    number[i] = scan.nextInt();
+    
+    scan.nextLine();
+    
+    System.out.println("수업명?\n");    
+    
+    classname[i] = scan.nextLine();
+
+    System.out.println("수업내용?\n");
+    
+    classdesc[i] = scan.nextLine();
+    
+    System.out.println("시작일?\n");    
+    
+    startdate[i] = Date.valueOf(scan.next());    
+    
+    System.out.println("종료일?\n");
+    
+    enddate[i] = Date.valueOf(scan.next());
+ 
+    System.out.println("총수업시간?\n");
+    
+    overall[i] = scan.nextInt();
+    
+    System.out.println("일수업시간?\n");
+        
+    daily[i] = scan.nextInt();
+    
+    scan.nextLine();
+    
+    System.out.println();
+    System.out.println("계속 입력하시겠습니까(Y/n)");
+    
+    response = scan.nextLine();
+    count++;
+    
+    if(!response.equalsIgnoreCase("y")) 
+     {
+      break;
+     }
+    
+    
+    }
+    
+    
+    scan.close();
+
+    System.out.println();
+    
+   // count[0] = 0;
+    for(int i = 0; i < count; i ++) 
+    {
+      
+    System.out.printf("%d, %s ,%s ~ %s,%d\n",number[i],classname[i],startdate[i],enddate[i],overall[i]);
+    }
+  
+    
+  
+  
   }
 }
 
