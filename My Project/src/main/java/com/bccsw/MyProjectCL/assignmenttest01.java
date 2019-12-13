@@ -26,7 +26,7 @@ public class assignmenttest01 {
     System.out.println("연산자 선택 \n 1.+ 2.- 3. * 4./ ");
 
     int num3 = calc.nextInt();
-
+// String num3 = calc.next();
 
     if(num3 == 1)
     {
@@ -78,3 +78,34 @@ public class assignmenttest01 {
   }
 
 }
+
+
+/*
+
+int result = 0;
+
+
+
+if (op.equals("+")){
+  result a + b;
+}else{
+  if(op.equals("-")){
+    result = a - b;
+  }
+}else{
+  if(op.equals.("*")){
+    result = a * b;
+    }else{
+      if(op.equals.("/")){
+        result = a / b;
+      }else{
+        System.out.println("사용불가능연산자");
+      }
+    }
+  }
+}
+
+elseif 구문은 없음
+else (중괄호생략) if 의 경우만 있음
+
+*/

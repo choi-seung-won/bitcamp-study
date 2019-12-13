@@ -4,24 +4,77 @@ import java.sql.Timestamp;
 import java.util.Scanner;
 
 public class App3 {
-  public static void main(String[] args) {
-    Scanner ok = new Scanner(System.in);
-    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+  
+  
+  final static int size = 100;
+  
+  public static ReferrenceBoard[] board = new ReferrenceBoard[size];
+  
+  
+  public static Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+  
+  static int count = 0; // 로컬변수,메소드에 사용목적
+  
+  
+    public static void main(String[] args) {
     
-    System.out.println("번호 :\n");
-    String number = ok.nextLine();
-    
-    System.out.println("내용 : \n");
-    String description = ok.nextLine();
-    
-    System.out.println("조회수 : \n");
-    String View = ok.nextLine();
-    
-    
-    System.out.printf("번호: %s \n",number);
-    System.out.printf("내용: %s \n",description);
-    System.out.printf("작성일: %s \n", timestamp);
-    System.out.printf("조회수: %s \n", View);
-  }
 
+      inputs();
+      
+      System.out.println();
+      
+      result();
+      
+      
+    
+    }
+    
+static void inputs() 
+{
+      Scanner ok = new Scanner(System.in);
+      
+      
+    for(int i = 0; i < size; i++ ) {
+      ReferrenceBoard brd = new ReferrenceBoard();
+      
+      System.out.print("번호: \n");
+      
+      
+      brd.number = ok.nextInt();
+      
+      ok.nextLine();
+      
+      System.out.print("내용: \n");
+      
+      brd.description = ok.nextLine();
+
+      count++;
+      board[i] = brd;
+      System.out.println();
+      
+      System.out.print("재실행 Y/N");
+      
+      String response = ok.nextLine();
+      
+      if (!response.equalsIgnoreCase("y")) {
+        
+        break;        
+      }
+    }
+}
+
+   static void result() {
+     System.out.println();
+     
+    for(int i = 0; i < count; i ++)
+    {
+      
+      ReferrenceBoard brd = board[i]; 
+      
+      System.out.printf("%d, %s, %s",brd.number,brd.description,timestamp);
+    
+    
+    }
+
+  }
 }
