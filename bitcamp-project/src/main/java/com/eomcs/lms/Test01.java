@@ -28,5 +28,6 @@ public class Test01 {
 
     
     
+   inputscan.close();
   }
 }
