@@ -2,11 +2,13 @@ package com.eomcs.lms;
 
 import java.util.Scanner;
 
-public class Test02 {
-  
+public class Test02_1 {
+
   
   
   public static void main(String[] args) {
+    int min_num = Integer.MAX_VALUE, max_num = Integer.MIN_VALUE; 
+    //가능한 최대값으로 미리 정의를해줌, if i == 0 루프제거시 사용가능
     
     Scanner scan = new Scanner(System.in);
     
@@ -14,8 +16,8 @@ public class Test02 {
     int size = 5;
     int[] num = new int[size];
     //5개의 배열을 할당받음 0~4
-    int min_num = num[0]; //0으로 바꾸어도 상관없음
-    int max_num = num[0];
+//    int min_num = num[0]; //0으로 바꾸어도 상관없음
+//    int max_num = num[0];
     //max/min_num 값 배열의 1번값으로 초기화
 //    int min_num = 0;
 //    int max_num = 0;
@@ -23,16 +25,15 @@ public class Test02 {
     
     for(int i = 0; i < num.length; i ++) //for문 구동 num.length=size인 5번까지 반복
   {
+      
+      // min_num = num[i] < min_num ? no : min;
+      // max_num = num[i] > max_num ? no : max;
     num[i] = scan.nextInt();//int 입력 값 스캔
     
 //    num[size] = scan.nextInt();
     
     scan.nextLine();
-    if(i == 0) // 1회루프에서 min,max 두 개의 값에 num[0]를 넣음.
-    {
-      min_num = num[i]; 
-      max_num = num[i];
-    }
+    
    
     if(num[i] < min_num)//num[i]가 min_num보다 작을 경우 num[i]값을 받아옴
     {
