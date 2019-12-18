@@ -2,7 +2,7 @@ package com.eomcs.basic.ex06;
 
 import java.util.Scanner;
 
-public class test03x {
+public class test03x3 {
 
   public static void main(String[] args) {
 
@@ -22,11 +22,15 @@ public class test03x {
       if(line % 2 == 0) {
         continue; // line / 2 가 짝수일 경우 출력하지않고 다음 라인으로 넘어감
       }
-      
-      drawLine(spacesize, ' ');
+
+      int count = 0;
+
+      while(count++ < spacesize){
+        System.out.print(" ");
+      }
       spacesize--;
 
-      drawLine(line, '*');
+      drawLine(line);
       System.out.println();
     }
   }
@@ -41,11 +45,11 @@ public class test03x {
     return width;
     
   }
-  static void drawLine(int length, char ch)
+  static void drawLine(int length)
   {    
     int j = 0;
     while (j++ < length ) { // j++ 현재x값 사용후 값 증가, int j = 의 변수값을 증가시키고 while문에 사용하는 j는 1이됨
-      System.out.print(ch);       
+      System.out.print("*");       
     }
   }
     

@@ -8,90 +8,79 @@ import java.util.Scanner;
 
 public class App {
 
-  
- 
+
+
   public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
-    
-    final int size = 10000;
-    
-//    int[] count = new int[size];
-    int[] number = new int[size];
-    String[] classname = new String[size];
-    String[] classdesc = new String[size];
-    Date[] startdate = new Date[size];
-    Date[] enddate = new Date[size];
-    int[] overall = new int[size];
-    int[] daily = new int[size];     
-    
-    String response;
-    
+
+    final int SIZE = 10000;
+
+    //    int[] count = new int[size];
+    int[] number = new int[SIZE];
+    String[] title = new String[SIZE];
+    String[] description = new String[SIZE];
+    Date[] startdate = new Date[SIZE];
+    Date[] enddate = new Date[SIZE];
+    int[] totalhours = new int[SIZE];
+    int[] dayhours = new int[SIZE];     
+
+
+
     int count = 0;
-    
-    
-    for(int i = 0 ; i < size; i ++) {      
+
+
+    for(int i = 0 ; i < SIZE; i ++) {      
+
+      count++;
       
-    System.out.println("번호?\n");
+      System.out.print("번호?");
 
-    number[i] = scan.nextInt();
-    
-    scan.nextLine();
-    
-    System.out.println("수업명?\n");    
-    
-    classname[i] = scan.nextLine();
+      number[i] = scan.nextInt();
 
-    System.out.println("수업내용?\n");
-    
-    classdesc[i] = scan.nextLine();
-    
-    System.out.println("시작일?\n");    
-    
-    startdate[i] = Date.valueOf(scan.next());    
-    
-    System.out.println("종료일?\n");
-    
-    enddate[i] = Date.valueOf(scan.next());
- 
-    System.out.println("총수업시간?\n");
-    
-    overall[i] = scan.nextInt();
-    
-    System.out.println("일수업시간?\n");
-        
-    daily[i] = scan.nextInt();
-    
-    scan.nextLine();
-    
-    System.out.println();
-    System.out.println("계속 입력하시겠습니까(Y/n)");
-    
-    response = scan.nextLine();
-    count++;
-    
-    if(!response.equalsIgnoreCase("y")) 
-     {
-      break;
-     }
-    
-    
+      scan.nextLine();
+
+      System.out.print("수업명?\n");    
+
+      title[i] = scan.nextLine();
+
+      System.out.print("수업내용?\n");
+
+      description[i] = scan.nextLine();
+
+      System.out.print("시작일?\n");    
+
+      startdate[i] = Date.valueOf(scan.next());    
+
+      System.out.print("종료일?\n");
+
+      enddate[i] = Date.valueOf(scan.next());
+
+      System.out.print("총수업시간?\n");
+
+      totalhours[i] = scan.nextInt();
+
+      System.out.print("일수업시간?\n");
+
+      dayhours[i] = scan.nextInt();
+
+      scan.nextLine();
+
+      System.out.println("계속 입력 (Y/n)");
+      
+      String response = scan.nextLine();
+
+      if(!response.equalsIgnoreCase("Y")) {
+        break;
+      }
     }
-    
-    
-    scan.close();
-
     System.out.println();
-    
-   // count[0] = 0;
+    // count[0] = 0;
     for(int i = 0; i < count; i ++) 
     {
-      
-    System.out.printf("%d, %s ,%s ~ %s,%d\n",number[i],classname[i],startdate[i],enddate[i],overall[i]);
-    }
-  
+      System.out.printf("%d, %s ,%s ~ %s,%d\n",number[i],title[i],startdate[i],enddate[i],totalhours[i]);
     
-  
-  
+    }
+    scan.close();
   }
 }
 

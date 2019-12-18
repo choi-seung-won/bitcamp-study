@@ -1,15 +1,17 @@
-package com.eomcs.basic.ex06;
-
+package com.eomcs.basic.ex06.assignment;
 import java.util.Scanner;
-//import com.eomcs.basic.ex06.Graphic;
-public class test01x {
-  
+
+public class test02x2 {
+
+
+
   public static void main(String[] args) {
+
 
     int width = inputInt();    
     int line = 0; // while은 조건문에 boolean값을 사용해야하므로 정의가 필요함
     while (line++ < width) {
-      Graphic.drawLine(line);
+      drawLine(line);
 
       System.out.println();
       }
@@ -27,12 +29,15 @@ public class test01x {
     return width;
     
   }
-
+  static void drawLine(int length)
+  {    
+    int j = 0;
+    while (j++ < length ) { // j++ 현재x값 사용후 값 증가, int j = 의 변수값을 증가시키고 while문에 사용하는 j는 1이됨
+      System.out.print("*");       
+    }
+  }
     
-    
-
   
 }
-
 
 

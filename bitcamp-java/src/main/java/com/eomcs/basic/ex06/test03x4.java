@@ -2,7 +2,7 @@ package com.eomcs.basic.ex06;
 
 import java.util.Scanner;
 
-public class test03x {
+public class test03x4 {
 
   public static void main(String[] args) {
 
@@ -22,7 +22,9 @@ public class test03x {
       if(line % 2 == 0) {
         continue; // line / 2 가 짝수일 경우 출력하지않고 다음 라인으로 넘어감
       }
-      
+
+      int count = 0;
+
       drawLine(spacesize, ' ');
       spacesize--;
 

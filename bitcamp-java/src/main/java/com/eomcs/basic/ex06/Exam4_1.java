@@ -11,6 +11,10 @@ public class Exam4_1 {
     for (int i = 1; i <= 5; i++) 
       System.out.println(i);
 
+    
+    //for문 선언변수는 그 for문 안에서 만 사용할 수 있다.
+    
+    //System.out.println(i);
     System.out.println("----------------------");
     for (int i = 1; i <= 5;) {
       System.out.println(i);
