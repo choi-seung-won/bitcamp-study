@@ -63,7 +63,7 @@ public class App {
 
       dayhours[i] = scan.nextInt();
 
-      scan.nextLine();
+      scan.nextLine();//남아있는 줄바꿈 값 제거
 
       System.out.println("계속 입력 (Y/n)");
       
