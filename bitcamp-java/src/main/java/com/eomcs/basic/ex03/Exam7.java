@@ -25,3 +25,5 @@ public class Exam7 {
 //줄바꿈코드 
 //Carrage Return(CR) : 0d
 //Line Feed(LF) : 0a
+//windows OS 에서 는 줄바꿈을 표시하기위해 CRLF 2바이트코드를 삽입한다.
+//unix os 에서는 줄바꿈을 표시하기 위해 LF 1바이트 코드를 삽입한다.
