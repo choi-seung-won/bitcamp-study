@@ -4,6 +4,8 @@ JDK(groalVM
 gradle
 
 
+CTRL D = Line clear
+
 PShell
 iwr -useb get.scoop.sh | iex
 
@@ -497,7 +499,7 @@ cpu instruction의 명령은 32bit로 전해지며 이에따라 RAM에 명령을
 
 직렬 데이터 스트림(예를 들어서 모뎀 등)에서 의미를 가지는 가장 작은 연속된 비트열. 여기에는 시작 비트, 종료 비트, 패리티 비트 등이 포함될 수 있으며, 예를 들어 7비트 ASCII 부호를 저장할 경우 최소 7비트에서 최고 12비트가 한 바이트가 될 수 있다.
 
-몇몇 프로그래밍 언어의 자료형. 예를 들어 C의 경우 한 바이트는 실행 환경에서 쓰이는 문자들을 담을 수 있을 만큼 큰 단위(C 표준 3.5항)로 정의되며, 한 바이트를 담는 char 자료형은 부호가 있느냐 없느냐와 상관 없이 적어도 8비트 이상(5.2.4.2.1항)이어야 한다. 자바의 byte 자료형은 항상 부호가 있으며 8비트로 정의된다.
+몇몇 프로그래밍 언어의 자료형.  자바의 byte 자료형은 항상 부호가 있으며 8비트로 정의된다. 예를 들어 C의 경우 한 바이트는 실행 환경에서 쓰이는 문자들을 담을 수 있을 만큼 큰 단위(C 표준 3.5항)로 정의되며, 한 바이트를 담는 char 자료형은 부호가 있느냐 없느냐와 상관 없이 적어도 8비트 이상(5.2.4.2.1항)이어야 한다(자바와 구분할 것).
 
 How does a CPU load multiple bytes at once if memory is byte addressed?
 
@@ -531,8 +533,309 @@ f-4byte부동소수점을 표현하는 접미사
 
 gradle compile.java = gradle이 해당 project의 compile을 함(javac 실행)
 
-gradle 에서의 build folder - 언제나 재생성 가능함, 따라서 github upload를 하지않으며 삭제에 위험부담이 없음
+gradle 에서의 build folder - 언제나 재생성 가능함, 따라서 github upload를 하지않으며 삭제에 위험부담이 없음, build folder에 컴파일결과.class가 생성됨
 
 .classpath/.project - eclipse가 참고하는 파일, 다른 editor에겐 의미가없음
 
 .metadata - eclipse 사용중 관련한 설정을 저장하는파일
+
+unicode hex code > enter가 0d0a로 표기됨, 
+
+eclipse ctrl + i > 선택범위 코드 정렬
+
+eclipse는 class객체(.java)를 저장할때 컴파일을 실행함, 저장즉시 bin하위 package 경로에 .clas가 생성됨
+
+eclipse는 자체적 컴파일이 불가능함, javacompiler을 자동실행
+
+정규화 > 지수부를 분리한 후 소수점 이하값을 x2을 곱하여 매 결과값을 0,1로 구분(ex-0.8x2=1.6=1 > 0.6x2=1.2=1 > 0.2x2 ..) 이를 가수부 23자리에 대입함. 남는 비트가 있다면 0으로 채움. 소수점 왼쪽에 1만 남도록 소수점을 이동하고 무조건 1이므로 해당값을 버린다
+
+
+따라서 소수점 오른쪽값만 가수부가 된다
+지수부는 한자리수 정수값에 127(bias)를 더한값을 2진수로 환산함
+
+hdd는 전기신호를 n,s극으로 바꾸어 구분한다, hdd는 자석가루가 포함되어 있으므로 시간이 지나면 데이터가 소멸함
+
+연결을(데이터 교환) 위한 매개체의 표준 규격/규칙 - Interface
+ex)DVI(digital visual interface)규격 cable // 영상신호 송출, 음성신호 송출 불가능 - 이 경우 본체-스피커에 음성신호 송출 가능한 케이블을 사용
+HDMI // 음성신호 송출 가능
+
+JAVA 객체지향언어
+
+
+
+object.function(method call)
+
+object-객체
+function/method-각기 다른 기능을 수행하는 객체의 하위기능
+method call-method가 시행할 value를 호출하는행위, 각 method마다 입력받는 value상한이 다름.
+
+외부 패키지에있는 class를 선언할 경우 path를 지정해야함
+reference - 문자열을 담을 수 없음, 다른 메모리의 주소를 저장하는 변수
+import class를 사용하기 위하여 외부 패키지에있는 class의 위치를 선언
+assignment operator - 할당연산자,메모리에 값을 집어넣음
+
+연산자와(+ - ..) 피연산자는(variable/reference) 띄어쓰기
+
+데이터의 저장은 RAM/HDD( cpu L1,L2 cashe논외)
+RAM에 저장시 변수로 저장, 사용 값 요구후 운영체제에서 할당되는방식.
+HDD는 file로 저장
+
+JVM에서 할당된 메모리값에 기계어를 Loading하는 / 객체(instance)를 저장하는(Heap) / Thread에게 할당된 공간  이존재
+JVM에는 main 을 호출(실행)하는 thread가 존재, 각 thread마다 stack 1개 존재. stack은 method를 사용할 때 thread를 준비함(로컬변수-하위변수를 관리)
+변수 - 데이터 저장을 위하여 확보/준비(생성)한 메모리, 데이터를 저장하는 변수를 사용하기 위한(준비시키는)행위 - 변수 선언(declaration)
+변수는 (메모리 종류/DataType - 정수값/문자열/부동소수점.. - byte크기등) (메모리 별칭) ; 로 선언됨
+
+primitive datatype -정수값 Byte(1/-128~127) Short(2/-32768~32767) 
+
+(4) long(8) / 부동소수점 float(4) double(8) boolean(4(jvm내부적)) / 문자 char(2)
+new > heap에 생성
+
+byte -128~127 short 2^8*2 = -32768~32767 65536 int 2^8*4 long 2^8*8  float - 유효자리수 7자리 double 15자리 boolean - true/false값 char 0~65535(charcode를 사용하므로 음수x)
+
+문자열은 객체이므로 data type에 속하지않음
+
+선언은 변수에 값을 넣는것, 값을 정의하는것이 아님.
+변수 할당연산자 '=' 는 변수에 값을 넣는행동을 수행. 할당연산자 기준 좌측값을 L-Value, 우측값을 R-Value;로 지칭함. 
+L Value는 무조건 Variable이어야 함. R Value는 값,변수,표현식(expression)이 올 수 있다.
+
+문장Statement = 자바 언어로 작성한 명령어
+표현식expression = 실행을 완료하면 값을 리턴하는 문장
+
+
+Reference 변수 의 구조 - object.Reference variable ///Reference(String,Thread,Date,Socket)메모리의 주소를 저장하는 변수//.Socket = network connection 정보를 저장하는 메모리의 주소
+문자형 8개를 제외한 변수는 모두 reference 변수.
+
+cpu = 64bit, 매 신호처리마다 4byte를 사용, java의경우 32bit 이 범주값내에선 단타성 변수의 처리시 메모리사용의 최소단위가 크므로(array의경우는 효율적)short,byte를 사용하지 않음.
+
+long literal은 변수에 값의저장이 가능하더라도 byte에 넣을 수 없음-4byte 정수 literal(-128~127)의경우 가능
+
+
+/*
+####객체 = 언어단위에서 정의된 구조체?
+*/
+
+
+정수 literal은 4,8byte만 있으나 변수에 값을 저장할 수 있다면 처리함 int 이하범주의 literal은 각각이 다른 int범주로 묶임
+
+/*
+ cpu의 레지스터는 각 레지스터마다 2^bit수 만큼의 신호를 처리함(=레지스터의 크기) 메모리할당시 처리하는 신호는 레지스터의 크기와 정비례하는가
+*/
+
+
+java는 32bit단위로 문자열을 처리함, 1byte=8bit 32bit = 4byte, java에서 연산을 시행할 때 메모리 절약을 위하여 최소단위를 4byte로 할당하고 계산함.(short, byte값으로 정의하는것이 array를 제외하고 의미없음)
+OS연산과 관계없음
+
+객체는 복합 데이터를 처리하는 메모리 형식 // class file 등을 지칭할때도 객체라고 부르는 경우가 있음
+class 객체의 기능을 정의한 설계도(구조체?)
+
+
+Sandbox - 해당 프로그램이 다른 프로그램의 메모리에 간섭할 수 없음을 지칭함
+
+부동소수점은 byte규격에 맞게 값을 넣어야함, 4byte부동소수점(f)을 8byte에 넣을경우 에러
+정수와 부동소수점 연산시 부동소수점으로 출력됨 / float + float = float, 결과에서 값이 왜곡
+7자리 이하의, 계산할경우가 없는 값은 float사용가능.계산필요시 double채용
+char 변수에는 2진수로 된 문자코드값이 저장됨. '' single quaotation안에 문자를 넣어 지정해도 값은 2진수 문자의 UCS-2유니코드값이 저장됨
+
+char 변수선언 = 문자코드값만 저장 / int 변수선언 = 정수값만 저장. 같은값을 선언해도 출력시 각각 문자 / 정수값이 출력
+
+
+java.Scanner의 작동원리
+
+키보드에서 input을 받음 > java.io.InputStream 래퍼런스에서 System.in(reference) = 키보드 전기신호를 받아 byte배열로 Scanner에 전달
+scanner 스캔 후 할당된 변수에게 값을 넘겨줌, 이 시점 이후로는 scanner를 닫아도 문제가없음
+nextline() method(명령) - enter 인풋 byte인 carrage return/ line feed이 걸릴경우 이하값을 버리고 나머지값을 저장함
+nextInt() - space,tab,new line 의 input byte가 걸릴경우 앞까지의 입력값중 method 호출부터 다음 공백이
+입력되기 전 까지의 문자데이터만을 int값으로 바꿔  [변수 = scanner.A();] 로 return, 숫자가 아닐경우 오류발생
+
+#system.in = inputstream의 하위 메소드
+
+scanner 사용시 scan이 정상적이지 않은건 커서문제
+
+String reference가 scanner에서 할당된 값의 주소를 받아옴. 변수와 달리 다른 메소드
+레퍼런스변수는 null로 초기화
+배열선언시 일반변수외에는 new 선언, new선언시 해당메모리는 할당됨, array배열 변수사용시  Variable[0~(max-1)] 로 표기
+
+context menu - 상황에 따라 다른 메뉴가 출력되는 ui를 지칭(ex)오른클릭 팝업)
+refactor - rename - 변수명 일괄변경
+final > 배열 갯수/상수를 저장한 변수의 값 변경을 막음
+
+
+-배열과 인스턴스, 메소드,레퍼런스,참조,오프셋
+
+배열의 개수를 변수에 저장하여 크기 변경을 쉽게 하기
+배열의 개수를 저장한 변수를 함부로 변경하지 못하도록 한다. - final
+코드를 관리하기 쉽도록 작은 기능단위로 분리한다. - method
+Class하위 function인 method간 공유하는 변수는 class변수로 선언 - static variable
+복합데이터를 저장할 메모리 설계 ( .class)
+Class는 메모리를 설계,관련method를 묶는 두분류밖에 없음.
+같은패키지 내부 클래스사용시 import/참조할 필요 없음
+배열은 같은 datatype을 여러개 저장하기위하여 메모리를 확보/할당(생성한다 라고 표현)받기위해 만듦
+
+실제 값(int,byte,short,long... primative-datatype)을 저장하는 메모리 - instance 
+메모리의 주소(offset-address)를 저장하는 변수 - reference(=pointer) / pri-datatype을 제외한 값을 저장
+
+offset-address - 관리를 목적으로 기준점을 마련한 상대적인 주소(절대값x)
+
+int[]([] = 배열선언, 레퍼런스가됨) arr(메모리 주소저장변수) = new int(pri-datatype)[3];(배열 instance, 실제 메모리를 생성하는 명령)
+reference는 주소값 정의없이 쓸 수 없음(Data data; = X) 배열이아님
+Data.getYears(); < 주소값을 받아오는 method, 해당 method가 받아올 주소값이 없는경우(Data정의가 안됬을경우)
+null point exception error가 발생
+연속된 배열의 저장소중 하나에 임의로 값을 할당할 수 있음
+배열 인스턴스는 생성되는순간 기본값으로 0이 할당됨(boolean 의경우 false), 인스턴스 datatype[x] x 는 값을 할당할 수 있는 공간의 갯수
+저장되었던 배열 인스턴스주소를 갖고있는 레퍼런스가 덮어씌워질 경우 인스턴스 주소를 잃어버려 접근할 수 없음
+ > 주소를 잃어 접근 불가능한경우 사용이 불가능하므로 메모리가 낭비됨=garbage메모리(dangling object)
+ jvm 실행중 메모리가 부족할때/CPU여유가 있을 때 관리정책을 참조하는 garbage collector에 의하여 garbage는 메모리할당이 해제됨
+ jvm종료시에도 jvm이 사용하던 모든 메모리는 os에 반납되기에 garbage또한 할당이 해제됨
+
+배열 선언과 동시에 인스턴스를 초기화 시킬때 new int[] 를 생략가능하나 int[] arr8 = {100,90,80}; 
+레퍼런스 생성후 값 초기화할시 인스턴스 배열 갯수 생략불가능 ex) int[] arr8; arr8 = {100,90,80};
+
+!!! 배열사용시 2회차이후 null값 발생시 []레퍼런스 변수체크
+
+.class bytecode를 .exe(native)로 변환
+
+
+gradle cleanEclipse - gradle eclipse // 프로젝트를 이클립스지향으로 컴파일, 이클립스에서 import를 가능하게함
+
+method 내부에 선언된 변수를 local변수 라 칭한다.
+
+public static void main의   "(String[] args)" - 또한 로컬변수(parameter임)
+
+메인class에서 선언된 변수를 Instance Variable (인스턴스 필드(인스턴스 변수)) 라고함 > new 명령을 실행할 때 준비되는 변수
+메인class에서 선언된 static 변수를 (static int classVar etc..) 를 클래스 필드(variable) = static field(변수) 라고칭함. 
+> class가 로딩될 때 준비되는 변수
+
+local변수 > method를 실행할 시 준비되는 변수
+
+method 블록이 다르면 변수도 다름 > 따라서 같은 이름의 변수 선언가능, 다른 메서드 블록에 있는 변수 사용 불가(Exam71)
+
+static method(class method)가(static void ~)  아닐경우(instance method, void ~) Instance Variable 사용 가능
+
+method 안에 블록을 이용하여 변수의 사용 범위를 통제가능(ex ) public static void main (String[] args){int a; { " block"} } )
+블록안에 선언된 변수는 블록을 실행 시 준비됨, 블록 밖에선 선언된 변수 사용불가, 블록 밖 변수와 같은 이름을 가진 변수선언 불가,다른 블록의 변수와 이름이 같은 변수 선언가능 > 블록나갈시 제거되기때문
+
+** .js 는 method 내부 블록을 인정하지않음
+
+형변환  - 정수변수값을 부동소수점 변수에 삽입
+
+메모리 크기에 상관없이 정수변수의 값을 부동소수점 변수에 넣을 때 컴파일오류가 발생하지 않음, 실행시 유효자릿수를 초과시 값이 짤릴 수 있음.
+
+부동소수점에서는 지수부(소수점 이하값)을 저장하기에 int보다 정수범위 저장가능수가 작다 = 값이 짤릴 수 있음.
+부동소수점은 값을 삽입시 일정 값(float 7 Double 15) 이하는 값이 임의로 잘릴 수 있으나 에러가 뜨지 않음
+부동소수점은 정수 변수에 저장할 수 없음 - 부동소수점 값을 정수 변수에 저장하고 싶다면 형변환(type casting/type conversion)문법을 사용해야함
+부동소수점은 float을 double변수에 삽입시에도 왜곡 발생. > 처음부터 double변수를 사용하는것을 권장
+
+
+*정수를 부동소수점 메모리에 저장시 명시적 형변환 필요없음, 숫자를 문자 변수에 저장 가능, 정수 메모리간 형변환 가능, 그외 형변환 불가.
+
+>   ex) i = (int) f;//단, 소수점 이하의 수 (지수부?) 는 제거됨 = 정수부분만 저장
+개발자가 명확하게 다른 형의 값의 저장을 지시하는 문법을 "명시적 형변환(explicit type conversion/casting)"이라 칭함
+
+산술 연산자 : +, -, *, /,  % ( 나눈 나머지 ) - 연산우선순위(사칙연산 / https://toma0912.tistory.com/66 참고) 적용 
+
+*java는 정수연산 최소단위가 4byte. 연산시 변수를 사용할 경우 byte/short의 연산단위는 기본 4byte.(임시 4byte 정수 메모리를 만듦) 
+=>두 변수의 연산시 값이 복사되어 각 변수가 int타입으로 할당되므로 두개의 변수연산시 int값을 byte에 넣을 수 없음
+
+JAVA는 변수선언시 jvm종료시까지 datatype은 바뀌지 않음, 명시적 형변환은 해당 변수를 임시메모리에서 형변환하여 저장하고 연산 및 출력. 
+
+byte,short,char 는 암시적형변환시 연산시작전 int로 변환됨 > int => long => float => double 암시적 형변환은 정수와 부동소수점에서만 일어남(boolean X)
+
+큰 메모리의 값을 작은 메모리에 저장을 목적으로 형변환을 사용하기도 하나 형변환 하더라도 값이 잘리지 않을경우만 시도. (Exam1_7)
+
+= 할당 /== 비교연산
+&&연산이 오른쪽을 실행하기 전 결과를 알 수 있을경우 JVM은 실행의 효율을 위해 &&연산의 오른쪽을 실행하지 않는다.
+&연산자의 경우 왼쪽 값으로 결과를 예측할 수 있다 하더라도,결과에 상관 없이 & 오른쪽 문장을 무조건 실행
+
+비트연산자 - 주로 그래픽 관련 개발에 사용
+ex-비트연산 exclusive OR(같은값 0)  >  크로마킹 기법에 사용. 
+
+double(datatype) EPSILON = 0.0000x; // 
+의존객체
+Instance에 주입되는 의존성 - dependency ex) ... = new Scanner(System.in) // System.in - 주어지는 입력값을 읽음
+java dependency(object) - 의존객체 ex) Scanner A = new Scanner("dependency.dependency") =dependency injection(DI) 의존성 주입
+dependency container(IOC container) - dependency의 DB
+
+ReferenceVariable.Method(ex - Scanner A = new Scanner(System.in) int num = "A.nextInt()")
+
+++ 기존변수 값 1씩 증가
+
+비트 이동연산 곱셈연산 i << 1 = 2^1 / << 2 = 2^2 / << 3 = 2^3
+>> 나눗셈연산
+
+<<,>> 비트 이동연산의 연산방식 > 비트를 배수연산할 숫자만큼(>>3일경우 3칸) 오른쪽으로 이동함, 왼쪽의 남는 칸은 양수는 0, 음수는 1로 채움.
+>>> 이동 후 남은칸을 무조건 1로 채움(양수)
+
+* 비트 논리 연산자 &(and)를 이용하여 원하는 byte만 추출 가능 ex)  b = (i >> 16) * 0xff/f = 1111 = 15/  Tech interview 질문
+
+byte의 첫자리수가 1 일경우 음수, 2의보수로 환산을하므로
+ * -13
+ * 00001101 = 13
+ * 11110010
+ * +      1
+ * 11110011 = -13
+  (00001100(+1) = 13) 
+ 같은 계산을 함
+
+ 
+
+ /*
+아나그램의 비교연산
+1 - 경우의수를 나열하고 해당되는 조합을 픽업 - n! 팩토리얼을 사용한 연산
+2 - 알파벳의 sorting을 이용한 연산 - nlog n 연산
+ */
+
+32비트데이터를 이용하여 True/false값을 저장할 때 비트 논리 연산 &(and)을 사용, ( 소유주 그룹 게스트의 사용권한을 표기할 때 )d rwx r-x r-x 
+and 논리연산을 이용한 true/false값 비교 > 
+(값이 들어있는 변수) & (특정 언어를 표현한 비트 값) > & 연산의 결과와 (특정 언어를 표현한 비트 값)이 같은지 비교.
+비트 and 연산에서는 0을 사용할 시 원하지 않는 값을 거를 수 있음(비교대상자 간 비트가 동일해야 True값을 표현할 수 있기 때문)
+
+비트연산 if (var & 0xX0) > 0 = X의 1/0 (true/false) 구분 // tech interview
+
+0x00 = 16진수
+0b00 = 2진수
+
+i++ i-- 등의 후위연산자는 해당 라인을 실행 후 값을 증감시킴 / --i ++i 등의 전위연산자는 해당 값 연산을 우선함
+int i = 7;
+i = i++;
+
+temp(int) 에 7 할당이후 i값이 증가 > i = 8이되나 temp(int)값에서 7이 씌워져 i에 7이 할당됨
+= 7
+
+후위연산자 사용시 j++ 선언된 변수 값 증가(j++의 값은 불변), int j = 의 변수값을 증가시키나 사용하는 j는 1이됨
+
+int i = 2;
+int result = i++ + i++ * i++; = 12
+
+연산자 우선수위: 1) ++, --  2) *, /, % 3) +, -  4) =
+
+변수는 전/후위 연산자로 인하여 값이 변화할 수 있으나 값은 전/후위 연산자에 의하여 변경될 수 없음
+
+#할당연산자 = 와 statement = 
+
+java에서 else는 가장 가까운 if에 소속됨
+
+case값으로 상수 사용가능( finat int Var = 0, Var2 = 1 , Var3 = 2;...)
+case값으로 변수사용 불가, 다만 값이 바뀌지 않은 final 변수는 사용 가능
+
+상수를 enum을 사용해 별도 그룹으로 관리 가능( enum Level { var1 , var2 , var3 })
+enum 변수에는 그 타입에 정의된 값만 저장할 수 있다.
+
+while 문 label - label: while (x <= ~){} // 라벨명 : 반복문1 { 반복문2 { break:라벨명; }}  *
+> label의 밖으로 나감. 없이 break;할경우 내부 루프에서만 탈출후 전체루프를 다시시작.
+
+
+do while문 = while의 조건하에 있을경우 do를 실행
+
+method명 앞에는 return조건이(없을시 void), 접미 괄호에는 '(datatype값 parameter-출력값)'을 (int length..) 넣음
+
+문자출력-single quaotation, 문자열 - double quaotation
+
+class에서 직접 실행을 하지 않을경우 main method 선언이 필요없음
+
+@Overloading > 실행기능이 같은 메소드는 같은 메소드명을 부여할 수 있음(parameter를 다르게 사용해야함)
+
+Datatype VarName = class.method() > 해당 클래스 메소드를 호출
+
+Object  DataType > 모든 종류의 데이터타입 수용 가능한 선언
+
+git commit - m " " >>> git tag -a ~~~ -m ""  >  git commit -m " " >  git push origin (origin=server) ~~~ (tag name)
