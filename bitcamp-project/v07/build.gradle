@@ -1,0 +1,38 @@
+
+
+plugins {
+    id 'java' // id = function, java = object(객체) 'groovy' language,java와 같은 문법 사용
+
+    id 'application'
+
+//eclipse gradle plugin
+//eclipse IDE 관련 작업을 수행할 수 있는 명령이 들어있다.    
+    id 'eclipse'
+}
+
+tasks.withType(JavaCompile) {
+    // project의 소스파일 인코딩을 gradle에게 알려준다
+    options.encoding = 'UTF-8'
+
+    //sourcefile을 작성할 때 사용할 java version
+    sourceCompatibility = '1.8' // java 8 version 사용
+    //java class를 실행시킬 JVM의 최소 버전
+    targetCompatibility = '1.8'
+}// java plugin 주석처리시 java관련 명령어 사용불가
+
+
+repositories {
+
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:28.0-jre'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+application {
+    mainClassName = 'com.eomcs.lms.App'
+}
+// application plugin주석처리시 사용불가 run등의 커맨드 활성화
