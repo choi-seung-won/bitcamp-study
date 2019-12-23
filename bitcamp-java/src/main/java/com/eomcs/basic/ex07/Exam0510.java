@@ -2,7 +2,6 @@ package com.eomcs.basic.ex07;
 
 //# 메서드 : main() 메서드
 //
-
 public class Exam0510 {
 
   // JVM이 클래스를 실행할 때 main() 메서드를 호출한다.
