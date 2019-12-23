@@ -105,6 +105,33 @@ if (op.equals("+")){
   }
 }
 
+
+
+
+int result = 0;
+
+
+스파게티 줄인후
+
+if (op.equals("+"))
+{
+  result a + b;
+}else if(op.equals("-"))
+{
+    result = a - b;
+}else if(op.equals.("*"))
+{
+    result = a * b;
+}else if(op.equals.("/"))
+{
+    result = a / b;
+}else
+{
+  System.out.println("사용불가능연산자");
+  
+  return;
+}
+System.out.printf("=> %d %s %d = %d\n", a,op,b,result);
 elseif 구문은 없음
 else (중괄호생략) if 의 경우만 있음
 

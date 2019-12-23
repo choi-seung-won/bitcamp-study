@@ -7,6 +7,8 @@ public class Test01 {
     //parameter로 배열을 받아 그 값 중에서 최대 값을 찾아 리턴한다.
     for(int i=0;i<9; i++) {
       if(values[i] > 77) {
+        
+        
         values[0]=values[i];
       }
     }
@@ -23,5 +25,25 @@ public class Test01 {
     //출력결과 78
   }
   
+  /*
+   * 
+   * int value = max(values); // method call , values = arguments
+   * 
+   * System.out.println(value);
+   * 
+   * static int max(int[] values){ // values = parameter
+   * int maxValue = values[0];
+   * for (int i =0; i< values.length; i++){
+   * 
+   * if (values[i] > maxValue) {
+   * maxValue = values[i];
+   * }
+   * 
+   * 
+   * }
+   * 
+   * return maxValue;
+   
+   */
 
 }
