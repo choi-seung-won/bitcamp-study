@@ -17,7 +17,8 @@ public class Test05 {
     // 사용자로부터 밑변의 길이를 입력 받는다.
     
     
-    Scanner scan = new Scanner(System.in);
+    Scanner scan = new
+        Scanner(System.in);
     System.out.println("밑변길이입력  :  \n");
     
     int UserInput = scan.nextInt();
@@ -27,38 +28,43 @@ public class Test05 {
     base = UserInput;
     
     // 직삼각형을 출력한다.
-    printTriangle(base[]);
-    System.out.print(array[maxL]);
+    printTriangle(base);
+//    System.out.print(array[maxL]);
 
+    scan.close();
   }
   
-  static void printTriangle(int[] base) {
+  static void printTriangle(int base) {
     // 코드를 완성하시오!
     
-    int maxL = 0;
-    int Lcount = 1;
+    if(base == 0) {
+      return;
+    }
     
-    for(maxL = 0; maxL < base.length; maxL++) {
-    Lcount++;
-    if (maxL >= Lcount) {
+    printTriangle(base - 1);
+    
+    for (int i =0; i < base; i ++) { // 모든 재귀호출 연산 후 출력시행방식
+      System.out.print("*");
+    }
+    System.out.println();
+    
+  }
+  //  int maxL = 0;
+  //  int Lcount = 1;
+    
+  //  for(maxL = 0; maxL < base.length; maxL++) {
+  //  Lcount++;
+  //  if (maxL >= Lcount) {
       
  //     System.out.println();
-      array[maxL] = "\n";
+  //    array[maxL] = "\n";
 
-    }else {
+    //}else {
 //      System.out.println("*");
-      array[maxL] = "*";
-    }
+    //  array[maxL] = "*";
    // printTriangle(maxL + 1);
     //System.out.print(array[maxL]);
     
-  }
-    
     
   }
-}
-
-
-
-
 

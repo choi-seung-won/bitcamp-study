@@ -23,7 +23,12 @@ public class Test04 {
     int result = factorial(n);
     
     // 결과 값을 출력한다.
+    System.out.printf("%d! = ",n);
     
+    for (int i = 1; i < n; i++) {
+      System.out.printf("%d * ", i);
+      }
+    System.out.printf("%d = ", n);
     System.out.print(result);
   }
   
@@ -34,7 +39,7 @@ public class Test04 {
     {
     // 코드를 완성하시오!
     sum = 1;
-    
+    //return 1;
     }
     else
     {
