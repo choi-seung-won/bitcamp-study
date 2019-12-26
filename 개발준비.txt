@@ -673,7 +673,7 @@ final > 배열 갯수/상수를 저장한 변수의 값 변경을 막음
 코드를 관리하기 쉽도록 작은 기능단위로 분리한다. - method
 Class하위 function인 method간 공유하는 변수는 class변수로 선언 - static variable
 복합데이터를 저장할 메모리 설계 ( .class)
-Class는 메모리를 설계,관련method를 묶는 두분류밖에 없음.
+Class는 (datatype)메모리를 설계,관련method를 묶는 두분류밖에 없음.
 같은패키지 내부 클래스사용시 import/참조할 필요 없음
 배열은 같은 datatype을 여러개 저장하기위하여 메모리를 확보/할당(생성한다 라고 표현)받기위해 만듦
 
@@ -921,3 +921,61 @@ new 명령어로 만들어 진 모든 메모리는 heap에 생성됨. > stack ov
 
 
 .class > method분류의 class, class A {} >사용자 정의 데이터타입에서의 class
+
+
+java 재귀호출 > 재귀호출 method를 재귀호출 method 내부에서 다시 call 하여 연산함. method가 지속적으로 stack memory에 쌓임.
+
+eclipse > ctrl + click
+
+변수는 개별 관리 / method는 공유하는것이 유지보수의 핵심
+
+non-static field = instance field > new를 사용할 경우 instance생성시에 만들어짐
+static field = class field
+
+instance 는 non-static var의 집합, method가 소속될 수 없음
+
+static field에서는 classname 으로 var에 접근
+
+public의 유무 > 다른 package에 소속된 class의 접근 가능유무
+
+
+class 명 = datatype = 역할명
+static = class 소속임을 지칭/default,none(static이 없을경우) = instance 소속
+private내부소속,접근범위제어용/protected/public공개+/default같은패키지 > 해당 class의 공개여부
+
+
+method의 static / none 도 class에서의 static none과 동일하게 소속여부를 지칭
+class 구성요소 > member
+class는 필드string/datatype~/생성자class()/메서드선언void var()/instance block선언{}/static block선언static{} 의 45류가있음
+
+eclipse clean > JavaCompiler가 전체 sourcefile을 다시 compile하게함
+classfile $ > 중첩클래스(public class .java)의 하위클래스 + number > method 하위 소속시 추가
+.class < local class, 소스파일에 소속되지 않음.
+하위패키지 =/ 반드시 소속됨을 뜻하는것이 아님
+class를 다른 package에서 사용시 public, 아닐경우 default(같은 package소속일경우 만 사용가능)
+
+객체지향 분석 설계에서는 DataType의 관점에서 method = operator 로 여김(연산자를 정의하는 방식으로 method사용) > static을 붙이지 않음
+instance의 값을 사용하는 method = operator연산자
+instance method는 instance 주소를 받는 내장 변수Built-in가 있다(this)
+method를 instanceaddress.methodname();의 문장으로 호출할 때 instanceaddress를 자동으로 받는 내장변수가 있음
+static을 붙이지않음. / 이 경우 instance method를 class name으로 호출할 수 없음.(instanceaddress사용)
+method call 시 instanceaddress는 built-in this 에 자동보관됨(선언하지 않음).
+instance data를 다루는 operator(method)는 static으로 호출이 가능하나,non-static/instance method로 사용가능.-instanceVAR값을 사용시 사용
+instanceaddress 값을 사용함.(parameter/static제거 this. 사용)
+
+static method에는 this 내장변수가 없음.
+
+static 문법 > Classname.operator연산자(피연산자);
+non-static 문법 > 피연산자.operator연산자(); // 내장변수 this 사용
+
+지역변수와 달리 field는 0으로 자동 초기화됨
+
+reserved keyword > java에서 선점하여 변수명으로 사용 불가능한 단어(ex- this..)
+
+instance변수 생성 > new 명령어가 필요함.
+static > new가 필요하지 않음.
+
+개별적으로 관리되는 인스턴스변수 result 사용을 원할 시 파라미터로 인스턴트의 주소를 받아야 함 > 변수의 static 제거 + instanceVAR 사용
+=기존 method를 instance method로 변환해야함
+
+static변수는 class가 loading될때 한 번만 호출되므로 둘 이상 사용이 불가능하다.
